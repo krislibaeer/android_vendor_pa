@@ -56,7 +56,7 @@ endif
 # T-Mobile theme engine
 include vendor/pa/config/themes_common.mk
 
-#Embed superuser into settings 
+# embed superuser into settings 
 SUPERUSER_EMBEDDED := true
 
 # device common prebuilts
@@ -87,16 +87,16 @@ PRODUCT_COPY_FILES += \
 
 PA_VERSION_MAJOR = 3
 PA_VERSION_MINOR = 6
-PA_VERSION_MAINTENANCE = 0
+PA_VERSION_MAINTENANCE = 5
 PA_PREF_REVISION = 1
 
 TARGET_CUSTOM_RELEASETOOL :=source vendor/pa/tools/squisher
 
 VERSION := $(PA_VERSION_MAJOR).$(PA_VERSION_MINOR)$(PA_VERSION_MAINTENANCE)
 ifeq ($(DEVELOPER_VERSION),true)
-    PA_VERSION := dev_$(BOARD)-$(VERSION)-$(shell date +%0d%^b%Y-%H%M%S)
+    PA_VERSION := dev_$(BOARD)-$(VERSION)-$(shell date -u +%Y%m%d)
 else
-    PA_VERSION := $(TARGET_PRODUCT)-$(VERSION)-$(shell date +%0d%^b%Y-%H%M%S)
+    PA_VERSION := $(TARGET_PRODUCT)-$(VERSION)-$(shell date -u +%Y%m%d)
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
